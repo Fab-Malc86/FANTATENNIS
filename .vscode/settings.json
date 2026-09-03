@@ -1,0 +1,7 @@
+{
+  "code-runner.runInTerminal": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.executorMap": {
+    "c": "cd /d \"$dir\" && gcc -Wall -Wextra main.c struct_procedure/tennisti.c -o fantatennis.exe && .\\fantatennis.exe"
+  }
+}
