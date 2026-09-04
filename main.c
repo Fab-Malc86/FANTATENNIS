@@ -1,23 +1,35 @@
 #include <stdio.h>
+
 #include "tennista\tennista.h"
 
 
 int main(){
 
-  int a = 5;
-  int b = 3;
-  int c = 8; 
+  FILE *file;
+    Tennista t;
 
-  printf("%d\n",sizeof(a));
-  printf("%d\n",sum(a,b));
+    file = fopen("data/tennisti.dat", "rb");
 
-  if(maggioreDeiTre(a,b,c)==a){
-    printf("il maggiore dei tre -> a = %d",a);
-  }else if(maggioreDeiTre(a,b,c)==b){
-    printf("il maggiore dei tre -> b = %d",b);
-  }else{
-    printf("il maggiore dei tre -> c = %d",c);
-  }
+    if (file == NULL) {
+        printf("Errore nell'apertura del file.\n");
+        return 1;
+    }
+
+    if (fread(&t, sizeof(Tennista), 1, file) == 1) {
+
+        printf("ID: %d\n", t.id);
+        printf("Nome: %s\n", t.nome);
+        printf("Cognome: %s\n", t.cognome);
+        printf("Ranking: %d\n", t.ranking);
+        printf("Costo: %d\n", t.costo);
+        printf("Stato: %d\n", t.stato);
+
+    } else {
+        printf("Errore nella lettura del tennista.\n");
+    }
+
+    fclose(file);
+
 
 
   return 0;
