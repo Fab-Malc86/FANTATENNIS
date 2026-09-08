@@ -39,4 +39,9 @@ int creaTennista(Tennista *t,
                  int ranking,
                  StatoTennista stato);
 
+
+int cercaTennistaPerId(const char nomeFile[],
+                       int id,
+                       Tennista *risultato);
+
 #endif
