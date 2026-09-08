@@ -7,10 +7,12 @@
 #define MAX_NOME 30
 #define MAX_COGNOME 30
 
+
 typedef enum {
-    NON_DISPONIBILE,
-    ATTIVO
-} StatoTennista;
+    NON_ATTIVO,
+    ATTIVO,
+} Stato_t;
+
 
 typedef struct {
     int id;
@@ -18,26 +20,20 @@ typedef struct {
     char cognome[MAX_COGNOME];
     int ranking;
     int costo;
-    StatoTennista stato;
-} Tennista;
+    Stato_t stato;
+} Tennista_t;
 
 
-int validaRanking(int ranking);
+Tennista_t creaTennista(
+  int id,
+  char nome[MAX_NOME],
+  char cognome[MAX_COGNOME],
+  int ranking,
+  int costo
+  );
 
-int calcolaCosto(int ranking);
 
-int validaTennista(int id,
-                   const char nome[],
-                   const char cognome[],
-                   int ranking,
-                   StatoTennista stato);
 
-int creaTennista(Tennista *t,
-                 int id,
-                 const char nome[],
-                 const char cognome[],
-                 int ranking,
-                 StatoTennista stato);
 
 
 int cercaTennistaPerId(const char nomeFile[],
