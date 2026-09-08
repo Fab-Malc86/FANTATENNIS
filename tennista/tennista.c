@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "tennista.h"
 
 
@@ -21,30 +22,11 @@ Tennista_t creaTennista(
     return t;
   }
 
-
-
-int cercaTennistaPerId(const char nomeFile[],
-                       int id,
-                       Tennista *risultato)
-{
-
-  FILE *file;
-  Tennista t;
-
-  file = fopen(nomeFile, "rb");
-
-  if(file == 1){
-    while(fread(&t, sizeof(Tennista), 1, file) == 1){
-        if( t.id == id ){
-          *risultato=t;
-          fclose(file);
-          return 1;
-        }
-    }
-
-
-  }
-
-
-
+void visualizzaTennista(Tennista_t t){
+    printf("\nid --> %d", t.id);
+    printf("\nnome --> %s", t.nome);
+    printf("\ncongome --> %s", t.cognome);
+    printf("\nranking --> %d", t.ranking);
+    printf("\ncosto --> %d", t.costo);
+    printf("\nstato --> %d", t.stato);
 }
