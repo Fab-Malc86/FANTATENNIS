@@ -3,23 +3,48 @@
 #include <ctype.h>
 
 #include "tennista\tennista.h"
-
+#include "admin\admin.h"
 
 int main(){
 
-    //SEZIONE ADMIN
-    char adminUserName[30];
-    char adminPassword[30];
-    printf("\n-----Creazione Admin-----\n");
     
 
-    do{
-      printf("Inserisci User Name ---> ");
-      fgets(adminUserName,sizeof(adminUserName),stdin);
-      adminUserName[strcspn(adminUserName, "\n")] = '\0';// elimino la new line (invio) dal buffer
-    }while(strlen(adminUserName) == 0);// controllo se l'utente non scrive niente
+
+
+    printf("\n----FANTATENNIS-----\n");
     
-    printf("%s",adminUserName);
+
+
+
+
+
+
+
+    //SEZIONE ADMIN
+    FILE *file_admin = fopen("data/admin.bin", "rb");
+      char adminUserName[30];
+      int adminPassword;
+
+    if (file_admin == NULL) {
+        printf("Admin non presente\n");
+
+        //CREAZIONE ADMIN
+        printf("\n-----Creazione Admin-----\n");
+        do{
+          printf("Inserisci User Name ---> ");
+          fgets(adminUserName,sizeof(adminUserName),stdin);
+          adminUserName[strcspn(adminUserName, "\n")] = '\0';// elimino la new line (invio) dal buffer
+        }while(strlen(adminUserName) == 0);// controllo se l'utente non scrive niente
+        creaAdmin(adminUserName,adminPassword);// creo admin
+        visualizzaAdmin(adminUserName,adminPassword);// visualizzo credenziali admin
+        fclose(file_admin);
+
+    } else {
+        fclose(file_admin);
+        printf("Admin gia' presente\n");
+        // qui procedi eventualmente con il login
+    }
+    
 
 
 
@@ -62,7 +87,7 @@ int main(){
       getchar();// elimino la new line (invio) o altri caratteri dal buffer
     }while(costo < 1 || costo > COSTO_MAX || isalpha(costo));
     
-
+// ---------------------------------------------------------------------------------------------
 
 
 
@@ -112,6 +137,13 @@ int main(){
   //   }
 
   //   fclose(file);
+
+
+
+
+
+
+
 
 
 
