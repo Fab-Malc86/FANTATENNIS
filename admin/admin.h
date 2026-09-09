@@ -8,9 +8,9 @@ typedef struct{
 
 int creaAdmin(char userName[],int password);
 
-void visualizzaAdmin(char userName[],int password);
+void visualizzaAdmin(void);
 
-
+void admin(void);
 
 
 

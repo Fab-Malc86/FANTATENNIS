@@ -10,41 +10,29 @@ int main(){
     
 
 
-
+    int scelta;
     printf("\n----FANTATENNIS-----\n");
+    printf("\n1)Accesso come Amministratore\n");
+    printf("\n2)Accesso come Fantacoach\n");
     
+    do{
+      printf("\nScelta -> ");
+      scanf("%d",&scelta);
+      getchar();
+    }while(scelta < 1 || scelta > 2);
 
+    switch(scelta){
+      case 1: admin();
+              break;
+      case 2: printf("fantacoach");
+              break;
 
-
-
-
-
-
-    //SEZIONE ADMIN
-    FILE *file_admin = fopen("data/admin.bin", "rb");
-      char adminUserName[30];
-      int adminPassword;
-
-    if (file_admin == NULL) {
-        printf("Admin non presente\n");
-
-        //CREAZIONE ADMIN
-        printf("\n-----Creazione Admin-----\n");
-        do{
-          printf("Inserisci User Name ---> ");
-          fgets(adminUserName,sizeof(adminUserName),stdin);
-          adminUserName[strcspn(adminUserName, "\n")] = '\0';// elimino la new line (invio) dal buffer
-        }while(strlen(adminUserName) == 0);// controllo se l'utente non scrive niente
-        creaAdmin(adminUserName,adminPassword);// creo admin
-        visualizzaAdmin(adminUserName,adminPassword);// visualizzo credenziali admin
-        fclose(file_admin);
-
-    } else {
-        fclose(file_admin);
-        printf("Admin gia' presente\n");
-        // qui procedi eventualmente con il login
     }
-    
+
+
+
+
+
 
 
 
@@ -61,7 +49,7 @@ int main(){
       printf("\nid tennista --> ");
       scanf("%d",&id);
       getchar();// elimino la new line (invio) o altri caratteri dal buffer
-    }while(id < 1 || id > MAX_TENNISTI || isalpha(id));
+    }while(id < 1 || id > MAX_TENNISTI);
     
     do{
       printf("\nnome tennista --> ");
@@ -79,13 +67,13 @@ int main(){
       printf("\nranking tennista --> ");
       scanf("%d",&ranking);
       getchar();// elimino la new line (invio) o altri caratteri dal buffer
-    }while(ranking < 1 || ranking > MAX_TENNISTI || isalpha(ranking));
+    }while(ranking < 1 || ranking > MAX_TENNISTI);
     
     do{
       printf("\ncosto tennista --> ");
       scanf("%d",&costo);
       getchar();// elimino la new line (invio) o altri caratteri dal buffer
-    }while(costo < 1 || costo > COSTO_MAX || isalpha(costo));
+    }while(costo < 1 || costo > COSTO_MAX);
     
 // ---------------------------------------------------------------------------------------------
 

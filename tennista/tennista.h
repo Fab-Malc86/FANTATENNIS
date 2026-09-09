@@ -36,7 +36,7 @@ Tennista_t creaTennista(
 void visualizzaTennista(Tennista_t t);
 
 
-
+int aggiungiTennista(Tennista_t t);
 
 
 #endif

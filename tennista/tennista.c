@@ -30,3 +30,21 @@ void visualizzaTennista(Tennista_t t){
     printf("\ncosto --> %d", t.costo);
     printf("\nstato --> %d", t.stato);
 }
+
+int aggiungiTennista(Tennista_t t) {
+    FILE *file = fopen("data/tennisti.dat", "ab");
+
+    if (file == NULL) {
+        printf("Errore apertura file tennisti.\n");
+        return 0;
+    }
+
+    if (fwrite(&t, sizeof(Tennista_t), 1, file) != 1) {
+        printf("Errore salvataggio tennista.\n");
+        fclose(file);
+        return 0;
+    }
+
+    fclose(file);
+    return 1;
+}
